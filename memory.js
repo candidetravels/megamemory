@@ -5,7 +5,6 @@ var card_click = function(){
 // disable click on selected
 // check how many are '.selected'
   myArray = $('.selected');
-  
   // if 2 elements are '.selected', remove '.selected', wait 2 sec and flip cards to front
   if (myArray.length == 2) {
     $('.card').unbind('click');
