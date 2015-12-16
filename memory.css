@@ -11,3 +11,8 @@ p{
 .selected {
 border: 6px solid red;
 }
+
+.front p {
+content: "kgjhjhvuy";
+color:#fff;
+}

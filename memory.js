@@ -1,51 +1,44 @@
 var card_click = function(){
-  $(this).flip(true);
-  $(this).unbind('click');
+  $(this).flip(true); // make back flip :p
+  $(this).unbind('click');//make unclickable
   $(this).addClass('selected');
-// disable click on selected
-// check how many are '.selected'
-  myArray = $('.selected');
-  // if 2 elements are '.selected', remove '.selected', wait 2 sec and flip cards to front
-  if (myArray.length == 2) {
-    $('.card').unbind('click');
-    setTimeout(function() {
-      myArray.each(function() {
- $('.card.selected').removeClass('selected');
-    $(this).flip(false);
-        flip_event_handler();
+
+
+  myArray = $('.selected');// check how many are '.selected'
+ 
+  if (myArray.length == 2) { // if 2 elements are '.selected'
+    $('.card').unbind('click'); //all cards unclickable
+
+    setTimeout(function() { // remove .selected, flip to front and unbind bind again in 1500 ms
+      myArray.each(function() { //for all items in myArray
+
+// to do : if 2 cards are selected : if data-blabla === data-blabla {remove -or hide selected item} !grid layout: empty tile or rearrange masonry
+
+
+        // if (2 are the same){
+        //   remove/hide selected}
+        //   else
+
+ $('.card.selected').removeClass('selected'); // remove selected
+    $(this).flip(false); //flip to front
+        flip_event_handler(); //unbind bind again
   });
-    }, 1500);          
+    }, 1500); //in 1500 ms         
   }
 }
 
-// add .selected
+
 var flip_event_handler = function() {
-  $(".card").unbind('click', card_click);
-    $(".card").bind('click', card_click); 
+  $(".card").unbind('click', card_click); //unbind all click events in card click function which lasted from previous round
+    $(".card").bind('click', card_click); // bind click events again
 }
 
 $(document).ready(function(){
 
 //jquery flip
 $(".card").flip();
- $(".card").unbind('click');
-flip_event_handler();
+ $(".card").unbind('click'); //unbind all click events when doc ready
+flip_event_handler(); 
 
 
 });
-
-
-/* if  2 cards are flipped 
-(add class flipped?)
-    - don t allow another card to be clicked until:
-    - if the two card have the same image, hide or remove them, start from beginning
-      -else
-        - wait 5 seconds and then turn    flipped over cards back to front
-  
-
-
-/*
-$("#card-1").flip();
-$("#card-2").flip();
-$("#card-3").flip();
-*/
